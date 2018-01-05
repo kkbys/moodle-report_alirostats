@@ -106,7 +106,7 @@ defined('MOODLE_INTERNAL') || die;
                             'name' => 'coursecolour'.$course->id, 'value' => $config->coursecolours[$course->id]));
                     $input = html_writer::div($input, 'form-text');
                     $input = html_writer::div($input, 'form-setting col-sm-9');
-                    // まとめ
+                    // link (label & input(checkbox&text))
                     echo '<p>' . html_writer::div($label . $input, 'form-item row') . '</p>';
                 }
                 $label = html_writer::label(get_string('total', 'report_alirostats'), get_string('total', 'report_alirostats'));
