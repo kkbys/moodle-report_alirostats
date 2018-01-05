@@ -1,0 +1,13 @@
+/* AliroStats stylesheet */
+.alirostats-statistics img {
+    width: 100%;
+}
+.alirostats-settings .term-settings input[type="text"] {
+    width: 200px;
+}
+.alirostats-settings .display-settings input[type="text"] {
+    width: 200px;
+}
+.alirostats-settings .range-settings input[type="text"] {
+    width: 200px;
+}
