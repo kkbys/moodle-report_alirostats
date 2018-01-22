@@ -26,8 +26,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2018010500;             // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2018012200;             // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2012110900;             // Requires this Moodle version (2.7 or higher)
 $plugin->component = 'report_alirostats';    // Full name of the plugin (used for diagnostics)
 $plugin->maturity  = MATURITY_BETA; 			   // Maturity of the plugin
-$plugin->release   = '0.9.0 (Build: 20180105)';
+$plugin->release   = '0.9.1 (Build: 20180122)';

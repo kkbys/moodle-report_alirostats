@@ -57,8 +57,6 @@ class access_records {
         }
         $conditions .= "action = 'viewed'";
 
-        echo '<h1>' . $conditions . '</h1>';
-
         $this->records = $DB->get_records_select($table, $conditions, [], '', $fields);
     }
 
