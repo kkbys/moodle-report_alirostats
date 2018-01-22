@@ -45,8 +45,17 @@ class access_records {
         global $DB;
 
         $table = 'logstore_standard_log';
-        $conditions = "timecreated >= '" . $term->get_start()->getTimestamp() .
-                "' AND timecreated < '" . $term->get_end()->getTimestamp() . "' AND action = 'viewed'";
+        $conditions = '';
+
+        if ($term->get_start() && $term->get_end()) {
+            $conditions .= "timecreated >= '" . $term->get_start()->getTimestamp() .
+                    "' AND timecreated < '" . $term->get_end()->getTimestamp() . "' AND ";
+        } elseif ($term->get_start()) {
+            $conditions .= "timecreated >= '" . $term->get_start()->getTimestamp() . "' AND ";
+        } elseif ($term->get_end()) {
+            $conditions .= "timecreated < '" . $term->get_end()->getTimestamp() . "' AND ";
+        }
+        $conditions .= "action = 'viewed";
 
         $this->records = $DB->get_records_select($table, $conditions, [], '', $fields);
     }

@@ -56,20 +56,43 @@ abstract class stats_data {
     public function __construct($config, $records) {
         global $DB;
 
-        $this->term = new term($config->termstart, $config->termend);
+        if ($config->termstart !== '' && $config->termend !== '') {
+            $this->term = new term($config->termstart, $config->termend);
+        } elseif ($config->termstart !== '') {
+            $this->term = new term($config->termstart, $this->find_term_of_records(true));
+        } elseif ($config->termend !== '') {
+            $this->term = new term($this->find_term_of_records(false), $config->termend);
+        } else {
+            $this->term = new term($this->find_term_of_records(false), $this->find_term_of_records(true));
+        }
         $this->records = $records;
         $this->courses = $DB->get_records('course', array(), 'id', 'id');
         $this->config = $config;
     }
 
     /**
+     * Find the term of records.
+     *
+     * @param boolean $end If you want end date, true.
+     * @return string
+     */
+    private function find_term_of_records($end) {
+        $timecreateds = array();
+        foreach ($this->records as $record) {
+            $timecreateds[] = $record->timecreated;
+        }
+        if (!$end) {
+            sort($timecreateds);
+        } else {
+            rsort($timecreateds);
+        }
+        return date('Y/m/d', $timecreateds[0]);
+    }
+
+    /**
      * Adjust to the value in the specified range
      *
      * Needs to call it for each course.
-     *
-     * @param $access_numbers
-     * @param $rangemax
-     * @param $rangemin
      */
     public function align_access_numbers_by_range() {
         if ($this->config->rangemax !== '' || $this->config->rangemin !== '') {

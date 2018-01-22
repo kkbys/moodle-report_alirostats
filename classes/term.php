@@ -44,9 +44,17 @@ class term {
      * @param string $end stats end date.
      */
     public function __construct($start, $end) {
-        $this->start = new DateTime($start);
-        $this->end = new DateTime($end);
-        $this->end->modify('+1 day');
+        if ($start !== '') {
+            $this->start = new DateTime($start);
+        } else {
+            $this->start = false;
+        }
+        if ($end !== '') {
+            $this->end = new DateTime($end);
+            $this->end->modify('+1 day');
+        } else {
+            $this->end = false;
+        }
     }
 
     /**
