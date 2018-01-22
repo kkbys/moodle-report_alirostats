@@ -92,10 +92,10 @@ switch ($mode) {
             }
         } else {
             $graph->x_data = array_fill(0, $days, '');
-            // 最初と最後
+            // start and end date
             $graph->x_data[0] = $term->get_start()->format('Y/m/d');
             $graph->x_data[$days - 1] = $term->get_end()->modify('-1 day')->format('Y/m/d');
-            // 途中
+            // between
             if ($days % 2 === 0) {
                 $day = round(($days - 2) / 9);
                 for ($i = 1; $i < 9; $i++) {
