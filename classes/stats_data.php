@@ -56,16 +56,25 @@ abstract class stats_data {
     public function __construct($config, $records) {
         global $DB;
 
+        $this->records = $records;
         if ($config->termstart !== '' && $config->termend !== '') {
             $this->term = new term($config->termstart, $config->termend);
         } elseif ($config->termstart !== '') {
-            $this->term = new term($config->termstart, $this->find_term_of_records(true));
+            $termend = $this->find_term_of_records(true);
+            $this->term = new term($config->termstart, $termend);
+            set_config('termend', $termend, 'report_alirostats');
         } elseif ($config->termend !== '') {
-            $this->term = new term($this->find_term_of_records(false), $config->termend);
+            $termstart = $this->find_term_of_records(false);
+            $this->term = new term($termstart, $config->termend);
+            set_config('termstart', $termstart, 'report_alirostats');
         } else {
-            $this->term = new term($this->find_term_of_records(false), $this->find_term_of_records(true));
+            $termstart = $this->find_term_of_records(false);
+            $termend = $this->find_term_of_records(true);
+            $this->term = new term($termstart, $termend);
+            set_config('termstart', $termstart, 'report_alirostats');
+            set_config('termend', $termend, 'report_alirostats');
         }
-        $this->records = $records;
+
         $this->courses = $DB->get_records('course', array(), 'id', 'id');
         $this->config = $config;
     }

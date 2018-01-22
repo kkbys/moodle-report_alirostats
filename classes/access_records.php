@@ -55,7 +55,9 @@ class access_records {
         } elseif ($term->get_end()) {
             $conditions .= "timecreated < '" . $term->get_end()->getTimestamp() . "' AND ";
         }
-        $conditions .= "action = 'viewed";
+        $conditions .= "action = 'viewed'";
+
+        echo '<h1>' . $conditions . '</h1>';
 
         $this->records = $DB->get_records_select($table, $conditions, [], '', $fields);
     }
