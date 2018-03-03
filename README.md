@@ -1,11 +1,24 @@
 # moodle-report_alirostats
 
-Aliro is the word meaning Access in Esperanto.
+This plugin analyzes Moodle's standard log, and displays the number of views each course as a graph.  
+Because it can also output the analysis result to CSV format file (UTF-8 with BOM), you can also process it with Excel
 
-This moodle plugin analyzes log (for the term you specified) of moodle (logstore_standard_log), and display the access numbers as graph.
+このプラグインは，Moodleの標準ログを解析して，コースごとの閲覧数をグラフとして表示します．
+解析結果をCSV形式のファイル(UTF-8 with BOM)に出力して，Excel等で処理することもできます．
 
-You can also download access numbers data formatted to CSV(UTF-8 with BOM).
+## Graph Type / グラフの種類
 
+Three graphs are displayed: the number of views per hour, per date, day of the week.  
+表示するグラフは，1時間ごとの閲覧数や，日付・曜日ごとの閲覧数の3つです．  
+
+## Settings / 設定
+
+- Period / 期間
+- Display course / 表示コース
+- Each course's colour / 各コースの色
+- Each Graph Title / 各グラフのタイトル
+
+## Other / その他
+
+Aliro is the word meaning Access in Esperanto.  
 Aliroはエスペラント語でAccessを意味する語です．  
-このMoodleプラグインは，指定した期間のMoodleのログ(logstore_standard_logテーブル)を解析して，アクセス数をグラフとして表示します．  
-CSVに整形されたデータをBOM付のUTF-8でダウンロードできます．
