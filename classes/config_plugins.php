@@ -43,11 +43,11 @@ class config_plugins {
     public function __construct() {
         $this->config = get_config('report_alirostats');
 
-        if (!$this->config->termstart) {
+        if (!isset($this->config->termstart)) {
             $this->create_config();
         }
 
-        if (is_string($this->config->displaycouses) || is_string($this->config->coursecolours)) {
+        if (is_string($this->config->displaycourses) || is_string($this->config->coursecolours)) {
             global $DB;
             $courses = $DB->get_records('course', array(), 'id', 'id');
 
@@ -226,7 +226,7 @@ class config_plugins {
      *
      * Change the key to the course's id.
      *
-     * @param $courses mooodle courses
+     * @param $courses moodle's courses
      * @return array Formatted optional param 'displaycourses'
      * @throws coding_exception
      */
