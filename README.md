@@ -1,3 +1,8 @@
+# Please refer to
+https://dev.azure.com/kkbys/moodle-report_alirostats
+
+
+
 # moodle-report_alirostats
 
 This plugin analyzes Moodle's standard log, and displays the number of views each course as a graph.  
